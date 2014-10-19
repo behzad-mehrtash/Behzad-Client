@@ -60,6 +60,8 @@ int string color3_summary 0x7f060008
 int string color3_title 0x7f060007
 int string color4_summary 0x7f06000a
 int string color4_title 0x7f060009
+int string command_status 0x7f060022
+int string command_voice_record 0x7f060023
 int string dialog_color_picker 0x7f060000
 int string hello_world 0x7f060021
 int string pref1_category_title 0x7f06000b

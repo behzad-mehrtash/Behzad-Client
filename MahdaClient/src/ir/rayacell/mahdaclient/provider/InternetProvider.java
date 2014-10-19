@@ -1,8 +1,14 @@
 package ir.rayacell.mahdaclient.provider;
 
+import ir.rayacell.mahdaclient.model.BaseModel;
 import ir.rayacell.mahdaclient.param.BaseParam;
 
-public class InternetProvider implements BaseProvider{
+public class InternetProvider extends BaseProvider{
+
+	public InternetProvider(ProviderManager providerManager) {
+		super(providerManager);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public boolean connect() {
@@ -17,9 +23,11 @@ public class InternetProvider implements BaseProvider{
 	}
 
 	@Override
-	public void recieve(BaseParam param) {
+	public void recieve(BaseModel model) {
 		// TODO Auto-generated method stub
+		//test//
 		
+		mProviderManager.recieve(model);
 	}
 
 }

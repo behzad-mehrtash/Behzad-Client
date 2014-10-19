@@ -1,6 +1,9 @@
 package ir.rayacell.mahdaclient;
 
+import ir.rayacell.mahdaclient.manager.Container;
 import ir.rayacell.mahdaclient.manager.Manager;
+import ir.rayacell.mahdaclient.model.BaseModel;
+import ir.rayacell.mahdaclient.model.Command;
 import ir.rayacell.mahdaclient.provider.ProviderManager;
 import android.os.Bundle;
 import android.app.Activity;
@@ -13,7 +16,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        ProviderManager.setConnection();
+       	Container.getProviderManager().setConnection();
+       	BaseModel model = new Command(1, 111111111, App.getContext().getResources().getString(R.string.command_voice_record), "", 0, 0, 0);
+       	Container.getProviderManager().mProvider.recieve(model);
     }
 
 

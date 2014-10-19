@@ -2,27 +2,48 @@ package ir.rayacell.mahdaclient.provider;
 
 import java.util.Queue;
 
+import android.os.AsyncTask;
+
+import ir.rayacell.mahdaclient.manager.Manager;
+import ir.rayacell.mahdaclient.model.BaseModel;
 import ir.rayacell.mahdaclient.param.BaseParam;
 
 public class ProviderManager {
-	private BaseProvider provider;
-	private Queue<BaseParam> queue;
+	/*private*/public BaseProvider mProvider;
+	private Queue<BaseParam> mQueue;
 
-	
-	public static void setConnection() {
+	public void setConnection() {
 		// TODO Auto-generated method stub
-		
+		mProvider = new InternetProvider(this);
 	}
-	
-	public static boolean send(BaseParam param){
+
+	public boolean send(BaseParam param) {
 		return false;
-		
+
 	}
-	
-	public static boolean recieve(BaseParam param){
+
+	/** implement a call to database and manager.
+	 * 	every command must first be written in database 
+	 *  then forwarded to manager in order to start a service.
+	 * @param model
+	 */
+	public boolean recieve(BaseModel model) {
+		//call to database
 		
+		//call to manager
+		Manager.controll(model);
 		return false;
-		
+
+	}
+
+	private class ConnectionAsyncTask extends AsyncTask<BaseParam, Void, Void> {
+
+		@Override
+		protected Void doInBackground(BaseParam... param) {
+			mProvider.send(param[0]);
+			return null;
+		}
+
 	}
 
 }

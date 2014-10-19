@@ -255,6 +255,8 @@ public final class R {
         public static final int color3_title=0x7f060007;
         public static final int color4_summary=0x7f06000a;
         public static final int color4_title=0x7f060009;
+        public static final int command_status=0x7f060022;
+        public static final int command_voice_record=0x7f060023;
         /**  Color Picker 
          */
         public static final int dialog_color_picker=0x7f060000;

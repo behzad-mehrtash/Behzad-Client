@@ -1,8 +1,14 @@
 package ir.rayacell.mahdaclient.provider;
 
+import ir.rayacell.mahdaclient.model.BaseModel;
 import ir.rayacell.mahdaclient.param.BaseParam;
 
-public class BluetoothProvider implements BaseProvider{
+public class BluetoothProvider extends BaseProvider{
+
+	public BluetoothProvider(ProviderManager providerManager) {
+		super(providerManager);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public boolean connect() {
@@ -17,8 +23,9 @@ public class BluetoothProvider implements BaseProvider{
 	}
 
 	@Override
-	public void recieve(BaseParam param) {
+	public void recieve(BaseModel model) {
 		// TODO Auto-generated method stub
+		mProviderManager.recieve(model);
 		
 	}
 
