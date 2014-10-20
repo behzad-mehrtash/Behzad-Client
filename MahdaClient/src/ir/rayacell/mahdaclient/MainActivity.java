@@ -15,10 +15,11 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Container.activity=this;
         
        	Container.getProviderManager().setConnection();
-       	BaseModel model = new Command(1, 111111111, App.getContext().getResources().getString(R.string.command_voice_record), "", 0, 0, 0);
-       	Container.getProviderManager().mProvider.recieve(model);
+//       	BaseModel model = new Command(1, 111111111, App.getContext().getResources().getString(R.string.command_voice_record), "", 0, 0, 0);
+//       	Container.getProviderManager().mProvider.recieve(model);
     }
 
 

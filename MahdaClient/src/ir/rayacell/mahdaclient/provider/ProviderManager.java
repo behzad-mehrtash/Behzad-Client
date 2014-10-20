@@ -2,8 +2,11 @@ package ir.rayacell.mahdaclient.provider;
 
 import java.util.Queue;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 
+import ir.rayacell.mahdaclient.App;
+import ir.rayacell.mahdaclient.MainActivity;
 import ir.rayacell.mahdaclient.manager.Manager;
 import ir.rayacell.mahdaclient.model.BaseModel;
 import ir.rayacell.mahdaclient.param.BaseParam;
@@ -11,10 +14,16 @@ import ir.rayacell.mahdaclient.param.BaseParam;
 public class ProviderManager {
 	/*private*/public BaseProvider mProvider;
 	private Queue<BaseParam> mQueue;
+	private MainActivity activity;
 
+	public ProviderManager(MainActivity activity){
+		this.activity=activity;
+	}
+	
 	public void setConnection() {
 		// TODO Auto-generated method stub
-		mProvider = new InternetProvider(this);
+		mProvider = new InternetProvider(this, activity);
+		mProvider.connect();
 	}
 
 	public boolean send(BaseParam param) {
