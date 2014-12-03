@@ -5,6 +5,8 @@ import android.widget.Toast;
 import ir.rayacell.mahdaclient.App;
 import ir.rayacell.mahdaclient.MainActivity;
 import ir.rayacell.mahdaclient.model.BaseModel;
+import ir.rayacell.mahdaclient.model.Command;
+import ir.rayacell.mahdaclient.param.VoiceRecordParam;
 
 public class Manager {
 	public static void controll(final BaseModel model){
@@ -27,5 +29,14 @@ public class Manager {
 //		}
 //		
 	}
+
+	public static void soundRecord(Command command) {
+			VoiceRecordParam param = new VoiceRecordParam(command);
+			Container.getProviderManager().send(param);
+			// TODO
+			// add command to database
+		}
+	
+	
 
 }

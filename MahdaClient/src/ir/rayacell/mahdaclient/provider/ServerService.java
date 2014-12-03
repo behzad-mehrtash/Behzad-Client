@@ -2,7 +2,7 @@ package ir.rayacell.mahdaclient.provider;
 
 import ir.rayacell.mahdaclient.model.BaseModel;
 import ir.rayacell.mahdaclient.model.Command;
-
+import ir.rayacell.mahdaclient.Constants;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -12,6 +12,7 @@ import java.net.Socket;
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 public class ServerService extends IntentService {
@@ -32,9 +33,9 @@ public class ServerService extends IntentService {
 	@Override
 	protected void onHandleIntent(Intent arg0) {
 
-		while (true) {
-			try {
-				serverSocket = new ServerSocket(SocketServerPORT);
+		try {
+			serverSocket = new ServerSocket(SocketServerPORT);
+			while (true) {
 				socket = serverSocket.accept();
 				dataInputStream = new DataInputStream(socket.getInputStream());
 				dataOutputStream = new DataOutputStream(
@@ -61,7 +62,8 @@ public class ServerService extends IntentService {
 				}
 
 				count++;
-				message += "#" + count + " from " + socket.getInetAddress()
+				message = new String();
+				message = "#" + count + " from " + socket.getInetAddress()
 						+ ":" + socket.getPort() + "\n" + "Msg from client: "
 						+ messageFromClient + "\n";
 
@@ -74,50 +76,52 @@ public class ServerService extends IntentService {
 								+ "##################################3");
 						model = new Command(1, 1, arg0[0].toString(), "", 1, 1,
 								1);
-						// recieve(model);
 						return null;
 					}
 
 				}.execute(message);
 				String msgReply = "Hello from Android, you are #" + count;
 				dataOutputStream.writeUTF(msgReply);
-			} catch (IOException e1) {
-				e1.printStackTrace();
-				final String errMsg = e1.toString();
-				System.out.println(" errrrrrrrroorrrrrr" + errMsg);
-			} finally {
-				Log.d("finally", "finally &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-				if (socket != null) {
-					try {
-						socket.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-
-				if (dataInputStream != null) {
-					try {
-						dataInputStream.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-
-				if (dataOutputStream != null) {
-					try {
-						dataOutputStream.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-
+				
+				publishResults(message);
 			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+			final String errMsg = e1.toString();
+			System.out.println(" errrrrrrrroorrrrrr" + errMsg);
+		} finally {
+			Log.d("finally", "finally &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+			if (socket != null) {
+				try {
+					socket.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			if (dataInputStream != null) {
+				try {
+					dataInputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			if (dataOutputStream != null) {
+				try {
+					dataOutputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
 		}
 
 	}
 
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-	}
+	private void publishResults( String result) {
+	    Intent intent = new Intent(Constants.BROADCAST_ACTION);
+	    intent.putExtra(Constants.RESULT_KEY, result);
+	    LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+	  }
 }

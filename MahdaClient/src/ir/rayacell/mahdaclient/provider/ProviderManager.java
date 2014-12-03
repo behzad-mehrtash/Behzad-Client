@@ -2,10 +2,8 @@ package ir.rayacell.mahdaclient.provider;
 
 import java.util.Queue;
 
-import android.app.Activity;
 import android.os.AsyncTask;
 
-import ir.rayacell.mahdaclient.App;
 import ir.rayacell.mahdaclient.MainActivity;
 import ir.rayacell.mahdaclient.manager.Manager;
 import ir.rayacell.mahdaclient.model.BaseModel;
@@ -27,6 +25,7 @@ public class ProviderManager {
 	}
 
 	public boolean send(BaseParam param) {
+		new ConnectionAsyncTask().execute(param);
 		return false;
 
 	}

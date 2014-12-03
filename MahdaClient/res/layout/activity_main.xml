@@ -6,11 +6,140 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:scrollbars="vertical"
     tools:context=".MainActivity" >
 
-    <TextView
+    <EditText
+        android:id="@+id/et_call_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:ems="10" 
+        android:layout_alignParentTop="true"
+        android:hint="enter number"
+        android:inputType="phone">
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_call_number"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:text="call" />
+    
+    <ImageView
+        android:id="@+id/iv_photos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_call"
+         />
+
+    <Button
+        android:id="@+id/btn_take_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_photos"
+        android:text="photo" />
+    
+    <Button 
+        android:id="@+id/btn_airplane_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_photos"
+        android:text="AirPlaneMode"
+        android:layout_toRightOf="@id/btn_take_photo"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_take_photo"
         android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/btn_record_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView1"
+        android:layout_marginTop="20dp"
+        android:text="Start recording" />
+
+    <Button
+        android:id="@+id/btn_record_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView1"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/btn_record_audio"
+        android:text="start recording" />
+
+    <SurfaceView
+        android:id="@+id/sv_camera"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/textView1"
+        android:layout_toRightOf="@id/btn_record_video" />
+
+    <EditText
+        android:id="@+id/et_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_record_audio"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="ip" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_setip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_ip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:text="set ip" />
+
+    <EditText
+        android:id="@+id/et_send_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_setip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_send_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_send_message"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:text="send" />
+
+    <TextView
+        android:id="@+id/tv_show_recieved_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_send_message"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:maxLines="1000"
+        android:scrollbars="vertical"
+        android:text="TextView" />
 
 </RelativeLayout>
