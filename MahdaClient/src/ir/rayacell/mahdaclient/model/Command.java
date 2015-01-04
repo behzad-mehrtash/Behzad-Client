@@ -17,7 +17,7 @@ public class Command extends BaseModel {
 	@Column(type = ColumnType.TEXT)
 	private String date_and_time;
 
-	public Command(long commandid, long phonenumber, String commandtype,
+	public Command(long commandid, String phonenumber, String commandtype,
 			String datetime, int duration, int repetition, int delay) {
 		super(commandid, phonenumber, commandtype);
 		this.date_and_time = datetime;

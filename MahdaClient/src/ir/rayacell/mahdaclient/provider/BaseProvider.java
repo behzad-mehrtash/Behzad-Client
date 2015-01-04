@@ -14,9 +14,9 @@ public abstract class BaseProvider {
 		this.activity = activity;
 	}
 
-	public abstract boolean connect();
+	public abstract boolean connect(BaseParam param);
 
 	public abstract boolean send(BaseParam param);
 
-	public abstract void recieve(BaseModel model);
+	public abstract void recieve(BaseParam param);
 }

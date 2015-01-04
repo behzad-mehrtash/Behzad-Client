@@ -210,33 +210,35 @@ public final class R {
         public static final int Integer=0x7f040005;
         public static final int LTR=0x7f040000;
         public static final int RTL=0x7f040001;
+        public static final int RelativeLayout01=0x7f04000b;
+        public static final int ScrollView01=0x7f040009;
         public static final int String=0x7f040002;
         public static final int TITLE=0x7f040008;
         public static final int TRUE=0x7f040006;
-        public static final int action_settings=0x7f040020;
-        public static final int btn_airplane_mode=0x7f04000d;
-        public static final int btn_call=0x7f04000a;
-        public static final int btn_record_audio=0x7f04000f;
-        public static final int btn_record_video=0x7f040010;
-        public static final int btn_send_message=0x7f040015;
-        public static final int btn_setip=0x7f040013;
-        public static final int btn_take_photo=0x7f04000c;
-        public static final int color_picker_view=0x7f040018;
-        public static final int custom_list_view_row_selected_indicator=0x7f04001e;
-        public static final int custom_list_view_row_text_view=0x7f04001f;
-        public static final int et_call_number=0x7f040009;
-        public static final int et_ip=0x7f040012;
-        public static final int et_send_message=0x7f040014;
-        public static final int hex_val=0x7f04001a;
-        public static final int imagev=0x7f040017;
-        public static final int iv_photos=0x7f04000b;
-        public static final int new_color_panel=0x7f04001c;
-        public static final int old_color_panel=0x7f04001b;
-        public static final int sv_camera=0x7f040011;
-        public static final int textView1=0x7f04000e;
-        public static final int text_hex_wrapper=0x7f040019;
-        public static final int toggle_togglebutton=0x7f04001d;
-        public static final int tv_show_recieved_message=0x7f040016;
+        public static final int action_settings=0x7f040022;
+        public static final int btn_airplane_mode=0x7f040010;
+        public static final int btn_call=0x7f04000d;
+        public static final int btn_record_audio=0x7f040012;
+        public static final int btn_record_video=0x7f040013;
+        public static final int btn_send_message=0x7f040017;
+        public static final int btn_setip=0x7f040015;
+        public static final int btn_take_photo=0x7f04000f;
+        public static final int color_picker_view=0x7f04001a;
+        public static final int custom_list_view_row_selected_indicator=0x7f040020;
+        public static final int custom_list_view_row_text_view=0x7f040021;
+        public static final int et_call_number=0x7f04000c;
+        public static final int et_ip=0x7f040014;
+        public static final int et_send_message=0x7f040016;
+        public static final int hex_val=0x7f04001c;
+        public static final int imagev=0x7f040019;
+        public static final int iv_photos=0x7f04000e;
+        public static final int new_color_panel=0x7f04001e;
+        public static final int old_color_panel=0x7f04001d;
+        public static final int sv_camera=0x7f04000a;
+        public static final int textView1=0x7f040011;
+        public static final int text_hex_wrapper=0x7f04001b;
+        public static final int toggle_togglebutton=0x7f04001f;
+        public static final int tv_show_recieved_message=0x7f040018;
     }
     public static final class integer {
         public static final int COLOR_BLACK=0x7f050000;
@@ -269,11 +271,21 @@ public final class R {
         public static final int color3_title=0x7f060007;
         public static final int color4_summary=0x7f06000a;
         public static final int color4_title=0x7f060009;
-        public static final int command_status=0x7f060022;
-        public static final int command_voice_record=0x7f060023;
+        public static final int command_call_device=0x7f060026;
+        public static final int command_delete_file=0x7f060029;
+        public static final int command_download_file=0x7f06002a;
+        public static final int command_flight_mode=0x7f060028;
+        public static final int command_get_file_list=0x7f060027;
+        public static final int command_status=0x7f060023;
+        public static final int command_video_record=0x7f060025;
+        public static final int command_voice_record=0x7f060024;
+        public static final int count=0x7f06002c;
+        public static final int default_location=0x7f060022;
+        public static final int delay=0x7f06002d;
         /**  Color Picker 
          */
         public static final int dialog_color_picker=0x7f060000;
+        public static final int duration=0x7f06002b;
         public static final int hello_world=0x7f060021;
         /**  PREFERENCE 1 
          */

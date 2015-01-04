@@ -7,6 +7,7 @@ import ir.rayacell.mahdaclient.manager.NetworkManager;
 import ir.rayacell.mahdaclient.model.BaseModel;
 import ir.rayacell.mahdaclient.model.Command;
 import ir.rayacell.mahdaclient.param.*;
+import ir.rayacell.mahdaclient.services.ServerService;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -44,7 +45,7 @@ public class InternetProvider extends BaseProvider {
 	}
 
 	@Override
-	public boolean connect() {
+	public boolean connect(BaseParam param) {
 		System.out.println("ip:" + NetworkManager.getIpAddress());
 		Intent server_intent = new Intent(activity, ServerService.class);
 		activity.startService(server_intent);
@@ -61,17 +62,18 @@ public class InternetProvider extends BaseProvider {
 				/*
 				 * param.getCommand_type() + "     " + param.getPhone_number() +
 				 * "     " +
-				 */((VoiceRecordParam) param).getDate_and_time()
-						+ " $$$$$$$$$$$$$$$$$$$$$$$$$$");
+				 *//*((VoiceRecordParam) param).getDate_and_time()
+						+ " $$$$$$$$$$$$$$$$$$$$$$$$$$"*/
+				param.getCommand());
 		myClientTask.execute();
 		return false;
 	}
 
 	@Override
-	public void recieve(BaseModel model) {
+	public void recieve(BaseParam param) {
 		// test//
 
-		mProviderManager.recieve(model);
+		mProviderManager.recieve(param);
 		// connect();
 	}
 
@@ -86,6 +88,9 @@ public class InternetProvider extends BaseProvider {
 				// Toast.LENGTH_LONG).show();
 				Log.d("receiver", response + "!!!!!!!!!!!!!!");
 				activity.updateView(response);
+				BaseParam param = new BaseParam(0, null, null);
+				param.mCommand = response;
+				recieve(param);
 			}
 		}
 

@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -26,54 +27,63 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Container.activity = this;
-		
-		
-		final EditText et_phonenumber = (EditText)findViewById(R.id.et_call_number);
-		Button btn_call = (Button)findViewById(R.id.btn_call);
+		Manager.initialize();
+//		Container.getProviderManager().setInternetProvider();
+		final EditText et_phonenumber = (EditText) findViewById(R.id.et_call_number);
+		Button btn_call = (Button) findViewById(R.id.btn_call);
 		btn_call.setOnClickListener(new OnClickListener() {
-			
+
 			public void onClick(View arg0) {
-				Container.getCallServerExecuter().startCall(et_phonenumber.getText().toString());
+				Container.getCallServerExecuter().startCall(
+						et_phonenumber.getText().toString());
 			}
 		});
-		
-		final Button btn_airplanemode = (Button)findViewById(R.id.btn_airplane_mode);
+
+		final Button btn_airplanemode = (Button) findViewById(R.id.btn_airplane_mode);
 		btn_airplanemode.setOnClickListener(new OnClickListener() {
-			
+
 			public void onClick(View arg0) {
-				String onbutton = Container.getAirplaneModeExecuter().onAirPlanePressed();
+				String onbutton = Container.getAirplaneModeExecuter()
+						.onAirPlanePressed();
 				btn_airplanemode.setText(onbutton);
 			}
 		});
 
-//		final ImageView iv_photo = (ImageView) findViewById(R.id.iv_photos);
+		// final ImageView iv_photo = (ImageView) findViewById(R.id.iv_photos);
 		Button btn_photo = (Button) findViewById(R.id.btn_take_photo);
 		btn_photo.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View arg0) {
-				Container.getPhotoCaptureExecuter().takePhoto();
+//				Container.getPhotoCaptureExecuter().takePhoto();
 			}
 		});
 
-		final Button btn_audiorecord = (Button) findViewById(R.id.btn_record_audio);
-		btn_audiorecord.setOnClickListener(new OnClickListener() {
+		// ///////////////////////////////////
+		// //////////////////////////////////
+		// record voice
+		// ///////////////////////////////////
+		// //////////////////////////////////
+	
+		// final Button btn_audiorecord = (Button)
+		// findViewById(R.id.btn_record_audio);
+		// btn_audiorecord.setOnClickListener(new OnClickListener() {
+		//
+		// public void onClick(View arg0) {
+		// String buttonname = Container.getVoiceRecordExecuter()
+		// .onRecord();
+		// btn_audiorecord.setText(buttonname);
+		// }
+		// });
 
-			public void onClick(View arg0) {
-				String buttonname = Container.getVoiceRecordExecuter()
-						.onRecord();
-				btn_audiorecord.setText(buttonname);
-			}
-		});
-
-		final Button btn_videorecord = (Button) findViewById(R.id.btn_record_video);
-		btn_videorecord.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View arg0) {
-				String buttonname = Container.getVideoRecorderExecuter()
-						.onRecord();
-				btn_videorecord.setText(buttonname);
-			}
-		});
+//		final Button btn_videorecord = (Button) findViewById(R.id.btn_record_video);
+//		btn_videorecord.setOnClickListener(new OnClickListener() {
+//
+//			public void onClick(View arg0) {
+//				String buttonname = Container.getVideoRecorderExecuter()
+//						.onRecord();
+//				btn_videorecord.setText(buttonname);
+//			}
+//		});
 
 		System.out.println("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
 		TextView tv_ip = (TextView) findViewById(R.id.textView1);
@@ -89,19 +99,19 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		final EditText et_message = (EditText) findViewById(R.id.et_send_message);
-		Button btn_send = (Button) findViewById(R.id.btn_send_message);
-		btn_send.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View arg0) {
-				Command command = new Command(1, (long) 1234567890, App
-						.getContext().getResources()
-						.getString(R.string.command_voice_record), et_message
-						.getText().toString(), 0, 0, 0);
-				Manager.soundRecord(command);
-				updateView(et_message.getText().toString());
-			}
-		});
+//		final EditText et_message = (EditText) findViewById(R.id.et_send_message);
+//		Button btn_send = (Button) findViewById(R.id.btn_send_message);
+//		btn_send.setOnClickListener(new OnClickListener() {
+//
+//			public void onClick(View arg0) {
+//				Command command = new Command(1,  "1234567890", App
+//						.getContext().getResources()
+//						.getString(R.string.command_voice_record), et_message
+//						.getText().toString(), 0, 0, 0);
+////				Manager.soundRecord(command);
+//				updateView(et_message.getText().toString());
+//			}
+//		});
 		// BaseModel model = new Command(1, 111111111,
 		// App.getContext().getResources().getString(R.string.command_voice_record),
 		// "", 0, 0, 0);
@@ -112,7 +122,7 @@ public class MainActivity extends Activity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		Container.getVoiceRecordExecuter().pause();
+//		Container.getVoiceRecordExecuter().pause();
 	}
 
 	@Override
@@ -129,16 +139,17 @@ public class MainActivity extends Activity {
 		tv.setText(text);
 	}
 
-//	@Override
-//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//		// TODO Auto-generated method stub
-//		if (requestCode == 1
-//				&& resultCode == RESULT_OK) {
-////			super.onActivityResult(requestCode, resultCode, data);
-//			ImageView imv = (ImageView) findViewById(R.id.iv_photos);
-//			Bundle extras = data.getExtras();
-//			Bitmap imageBitmap = (Bitmap) extras.get("data");
-//			imv.setImageBitmap(imageBitmap);
-//		}
-//	}
+	// @Override
+	// protected void onActivityResult(int requestCode, int resultCode, Intent
+	// data) {
+	// // TODO Auto-generated method stub
+	// if (requestCode == 1
+	// && resultCode == RESULT_OK) {
+	// // super.onActivityResult(requestCode, resultCode, data);
+	// ImageView imv = (ImageView) findViewById(R.id.iv_photos);
+	// Bundle extras = data.getExtras();
+	// Bitmap imageBitmap = (Bitmap) extras.get("data");
+	// imv.setImageBitmap(imageBitmap);
+	// }
+	// }
 }

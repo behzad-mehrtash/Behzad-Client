@@ -42,15 +42,15 @@ public final class R {
 		public static final int String = 0x7f040002;
 		public static final int TITLE = 0x7f040008;
 		public static final int TRUE = 0x7f040006;
-		public static final int color_picker_view = 0x7f040018;
-		public static final int custom_list_view_row_selected_indicator = 0x7f04001e;
-		public static final int custom_list_view_row_text_view = 0x7f04001f;
-		public static final int hex_val = 0x7f04001a;
-		public static final int imagev = 0x7f040017;
-		public static final int new_color_panel = 0x7f04001c;
-		public static final int old_color_panel = 0x7f04001b;
-		public static final int text_hex_wrapper = 0x7f040019;
-		public static final int toggle_togglebutton = 0x7f04001d;
+		public static final int color_picker_view = 0x7f04001a;
+		public static final int custom_list_view_row_selected_indicator = 0x7f040020;
+		public static final int custom_list_view_row_text_view = 0x7f040021;
+		public static final int hex_val = 0x7f04001c;
+		public static final int imagev = 0x7f040019;
+		public static final int new_color_panel = 0x7f04001e;
+		public static final int old_color_panel = 0x7f04001d;
+		public static final int text_hex_wrapper = 0x7f04001b;
+		public static final int toggle_togglebutton = 0x7f04001f;
 	}
 	public static final class integer {
 		public static final int COLOR_BLACK = 0x7f050000;
